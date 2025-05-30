@@ -1,17 +1,24 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.example.model.Workout;
+import org.example.service.FitnessTracker;
+
+import java.time.LocalDate;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        FitnessTracker tracker = new FitnessTracker();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Add a few workouts
+        tracker.addWorkout(new Workout("Running", 30, LocalDate.of(2025, 5, 25)));
+        tracker.addWorkout(new Workout("Cycling", 45, LocalDate.of(2025, 5, 26)));
+
+        // Get all workouts and print them
+        List<Workout> allWorkouts = tracker.getWorkouts();
+        for (Workout workout : allWorkouts) {
+            System.out.println(workout);
         }
+
     }
 }
